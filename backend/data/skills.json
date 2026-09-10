@@ -1,0 +1,38 @@
+{
+  "frontend": [
+    { "name": "React.js", "level": 95, "category": "Frontend", "icon": "Atom" },
+    { "name": "JavaScript (ES6+)", "level": 92, "category": "Frontend", "icon": "Code2" },
+    { "name": "Next.js (Basics)", "level": 80, "category": "Frontend", "icon": "Zap" },
+    { "name": "TypeScript", "level": 82, "category": "Frontend", "icon": "Code" },
+    { "name": "HTML5 & CSS3", "level": 95, "category": "Frontend", "icon": "Layout" },
+    { "name": "Tailwind CSS", "level": 90, "category": "Frontend", "icon": "Palette" }
+  ],
+  "backend": [
+    { "name": "Node.js", "level": 90, "category": "Backend", "icon": "Server" },
+    { "name": "Express.js", "level": 90, "category": "Backend", "icon": "Cpu" },
+    { "name": "MongoDB", "level": 88, "category": "Backend", "icon": "Database" },
+    { "name": "MySQL", "level": 82, "category": "Backend", "icon": "Database" },
+    { "name": "REST APIs", "level": 92, "category": "Backend", "icon": "Network" }
+  ],
+  "stateManagement": [
+    { "name": "Redux Toolkit", "level": 88, "category": "State Management", "icon": "Layers" },
+    { "name": "Redux Thunk", "level": 85, "category": "State Management", "icon": "Layers" },
+    { "name": "Context API", "level": 88, "category": "State Management", "icon": "Layers" }
+  ],
+  "security": [
+    { "name": "JWT Authentication", "level": 88, "category": "Security", "icon": "ShieldCheck" },
+    { "name": "Role-Based Access Control (RBAC)", "level": 86, "category": "Security", "icon": "ShieldCheck" }
+  ],
+  "tools": [
+    { "name": "Git & GitHub", "level": 90, "category": "Tools", "icon": "GitBranch" },
+    { "name": "Postman", "level": 90, "category": "Tools", "icon": "Terminal" },
+    { "name": "Render", "level": 85, "category": "Tools", "icon": "Cloud" },
+    { "name": "Hostinger", "level": 85, "category": "Tools", "icon": "Server" }
+  ],
+  "other": [
+    { "name": "API Integration", "level": 92, "category": "Other", "icon": "Network" },
+    { "name": "Performance Improvement", "level": 88, "category": "Other", "icon": "Zap" },
+    { "name": "Clean Code", "level": 90, "category": "Other", "icon": "CheckCircle" },
+    { "name": "Razorpay (Basics)", "level": 80, "category": "Other", "icon": "CreditCard" }
+  ]
+}

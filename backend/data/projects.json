@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "title": "EWShopping - Multi-Vendor E-Commerce Platform",
+    "description": "Customer-facing multi-vendor online shopping platform. Features responsive mobile/desktop pages, product search, filters, sorting, category pages, cart and checkout, login/user session handling, dynamic product variant/stock pages, and optimized performance via lazy loading and efficient state handling.",
+    "category": "Full Stack",
+    "image": "https://images.unsplash.com/photo-1556742049-0a67e5572293?auto=format&fit=crop&w=800&q=80",
+    "technologies": ["React.js", "Redux Toolkit", "Node.js", "Express.js", "MongoDB", "REST APIs"],
+    "liveUrl": "https://ewshopping.com",
+    "githubUrl": "https://github.com/poojawork1111-alt",
+    "featured": true,
+    "bullets": [
+      "Built and maintained an e-commerce website for customers.",
+      "Made responsive pages for mobile and desktop.",
+      "Added product search, filters, sorting, and category pages.",
+      "Built cart and checkout features.",
+      "Added login and user session handling.",
+      "Used REST APIs to get and update product data.",
+      "Added product pages with price, variants, and stock details.",
+      "Improved app speed using lazy loading and better state handling."
+    ]
+  },
+  {
+    "id": 2,
+    "title": "EWShopping Courier Panel",
+    "description": "End-to-end courier operations and fleet tracking management system. Implements parcel creation, rider assignment, tracking, and delivery status updates, pincode-to-area location mapping, and multi-tier role-based access control (Rider, Hub Admin, Staff).",
+    "category": "Full Stack",
+    "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
+    "technologies": ["React.js", "Node.js", "Express.js", "MongoDB", "RBAC", "REST APIs"],
+    "liveUrl": "https://courierhub.ewcourier.com",
+    "githubUrl": "https://github.com/poojawork1111-alt",
+    "featured": true,
+    "bullets": [
+      "Built features for courier creation, assignment, tracking, and delivery status.",
+      "Added pincode-to-area mapping for easy location selection.",
+      "Worked on Rider, Hub Admin, and Staff roles.",
+      "Added role-based access so users can access only allowed features.",
+      "Worked on courier tracking and status updates.",
+      "Improved backend data handling and fixed bugs.",
+      "Helped improve system stability and performance."
+    ]
+  }
+]

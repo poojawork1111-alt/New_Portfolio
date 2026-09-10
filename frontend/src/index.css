@@ -1,0 +1,681 @@
+@import "tailwindcss";
+
+:root {
+  --bg-dark: #060813;
+  --bg-card: rgba(14, 19, 38, 0.7);
+  --border-glass: rgba(147, 197, 253, 0.1);
+
+  /* Color Theme Tokens (Default: Electric Indigo & Cyan - Linear/Vercel) */
+  --accent-from: #6366f1;
+  --accent-via: #8b5cf6;
+  --accent-to: #06b6d4;
+  --accent-glow: rgba(99, 102, 241, 0.28);
+  --accent-border: rgba(99, 102, 241, 0.35);
+  --accent-badge-bg: rgba(99, 102, 241, 0.12);
+  --accent-badge-text: #a5b4fc;
+}
+
+/* 1. Electric Indigo & Cyan (Linear / Vercel style) */
+[data-color-theme="indigo"] {
+  --accent-from: #6366f1;
+  --accent-via: #8b5cf6;
+  --accent-to: #06b6d4;
+  --accent-glow: rgba(99, 102, 241, 0.28);
+  --accent-border: rgba(99, 102, 241, 0.35);
+  --accent-badge-bg: rgba(99, 102, 241, 0.12);
+  --accent-badge-text: #a5b4fc;
+}
+
+/* 2. Supabase Emerald & Mint */
+[data-color-theme="emerald"] {
+  --accent-from: #10b981;
+  --accent-via: #059669;
+  --accent-to: #14b8a6;
+  --accent-glow: rgba(16, 185, 129, 0.28);
+  --accent-border: rgba(16, 185, 129, 0.35);
+  --accent-badge-bg: rgba(16, 185, 129, 0.12);
+  --accent-badge-text: #6ee7b7;
+}
+
+/* 3. Apple Sapphire & Ice Blue */
+[data-color-theme="sapphire"] {
+  --accent-from: #2563eb;
+  --accent-via: #3b82f6;
+  --accent-to: #38bdf8;
+  --accent-glow: rgba(37, 99, 235, 0.28);
+  --accent-border: rgba(37, 99, 235, 0.35);
+  --accent-badge-bg: rgba(37, 99, 235, 0.12);
+  --accent-badge-text: #93c5fd;
+}
+
+/* 4. Raycast Violet & Rose */
+[data-color-theme="violet"] {
+  --accent-from: #8b5cf6;
+  --accent-via: #c084fc;
+  --accent-to: #f472b6;
+  --accent-glow: rgba(139, 92, 246, 0.28);
+  --accent-border: rgba(139, 92, 246, 0.35);
+  --accent-badge-bg: rgba(139, 92, 246, 0.12);
+  --accent-badge-text: #ddd6fe;
+}
+
+/* 5. Sunset Amber & Fire */
+[data-color-theme="amber"] {
+  --accent-from: #f59e0b;
+  --accent-via: #f97316;
+  --accent-to: #ef4444;
+  --accent-glow: rgba(245, 158, 11, 0.28);
+  --accent-border: rgba(245, 158, 11, 0.35);
+  --accent-badge-bg: rgba(245, 158, 11, 0.12);
+  --accent-badge-text: #fde68a;
+}
+
+/* Reference Gradient Text */
+.text-gradient-purple-pink {
+  background: linear-gradient(135deg, var(--accent-from) 0%, var(--accent-via) 50%, var(--accent-to) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.3s ease;
+}
+
+.text-gradient-magenta-cyan {
+  background: linear-gradient(135deg, var(--accent-from) 0%, var(--accent-via) 40%, var(--accent-to) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.3s ease;
+}
+
+/* Dynamic Gradient Button */
+.btn-gradient-connect {
+  background: linear-gradient(135deg, var(--accent-from) 0%, var(--accent-via) 50%, var(--accent-to) 100%);
+  color: #ffffff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px -2px var(--accent-glow);
+}
+.btn-gradient-connect:hover {
+  box-shadow: 0 6px 28px 2px var(--accent-glow);
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+/* Ambient Dynamic Glow effects */
+.ambient-glow-purple {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  transition: background 0.4s ease;
+}
+
+.ambient-glow-pink {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  filter: blur(70px);
+  pointer-events: none;
+  transition: background 0.4s ease;
+}
+
+.ambient-glow-cyan {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  transition: background 0.4s ease;
+}
+
+/* ==========================================================================
+   LIGHT MODE THEME OVERRIDES (Leaves Dark Mode completely untouched)
+   ========================================================================== */
+.theme-light {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+.theme-light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.theme-light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+
+/* Glassmorphism Cards in Light Mode */
+.theme-light .reference-card {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid rgba(203, 213, 225, 0.8) !important;
+  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.08), 0 4px 10px -2px rgba(0, 0, 0, 0.03) !important;
+}
+
+.theme-light .reference-card-hover:hover {
+  background: #ffffff !important;
+  border-color: rgba(168, 85, 247, 0.5) !important;
+  box-shadow: 0 15px 35px -8px rgba(168, 85, 247, 0.18) !important;
+}
+
+/* Headings & Text Elements */
+.theme-light h1, 
+.theme-light h2, 
+.theme-light h3, 
+.theme-light h4,
+.theme-light h5,
+.theme-light h6 {
+  color: #0f172a !important;
+}
+
+.theme-light .text-white {
+  color: #0f172a !important;
+}
+
+.theme-light .text-slate-100,
+.theme-light .text-slate-200 {
+  color: #1e293b !important;
+}
+
+.theme-light .text-slate-300,
+.theme-light .text-slate-300\/90 {
+  color: #334155 !important; /* Sharp readable dark slate */
+}
+
+.theme-light .text-slate-400 {
+  color: #475569 !important; /* Crisp medium-dark slate */
+}
+
+.theme-light .text-slate-500 {
+  color: #64748b !important;
+}
+
+/* KEEP TEXT WHITE ON COLORED / GRADIENT BACKGROUNDS */
+.theme-light .btn-gradient-connect,
+.theme-light .btn-gradient-connect * {
+  color: #ffffff !important;
+}
+
+.theme-light .bg-gradient-to-tr.from-purple-600 *,
+.theme-light header .bg-gradient-to-tr * {
+  color: #ffffff !important;
+}
+
+/* Doodles / Handwriting text in Light Mode (Deep vibrant purple with high contrast) */
+.theme-light .font-handwriting {
+  color: #7e22ce !important; /* Deep fuchsia/purple-700 */
+  font-weight: 700 !important;
+  text-shadow: 0 1px 2px rgba(126, 34, 206, 0.12) !important;
+}
+
+/* High-Contrast Vibrant Text Gradients for Light Mode */
+.theme-light .text-gradient-purple-pink {
+  background: linear-gradient(135deg, #be185d 0%, #7e22ce 50%, #4338ca 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.theme-light .text-gradient-magenta-cyan {
+  background: linear-gradient(135deg, #be123c 0%, #9333ea 50%, #0284c7 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Inner Cards, Skill Boxes, Tags & Dark Containers turned crisp white in Light Mode */
+.theme-light .bg-slate-900,
+.theme-light .bg-slate-900\/90,
+.theme-light .bg-slate-900\/80,
+.theme-light .bg-slate-950,
+.theme-light .bg-\[\#0b0e1e\]\/90,
+.theme-light .bg-\[\#080b18\]\/90,
+.theme-light .bg-\[\#090d1c\]\/90,
+.theme-light .bg-\[\#090d1c\],
+.theme-light .bg-\[\#070913\] {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #1e293b !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Subtle border color replacements */
+.theme-light .border-slate-800,
+.theme-light .border-slate-800\/90,
+.theme-light .border-slate-800\/80,
+.theme-light .border-slate-800\/60,
+.theme-light .border-slate-700,
+.theme-light .border-slate-700\/80 {
+  border-color: #cbd5e1 !important;
+}
+
+/* Vibrant High-Contrast Pill Text Colors */
+.theme-light .text-purple-300,
+.theme-light .text-purple-400 {
+  color: #6b21a8 !important; /* purple-800 */
+}
+
+.theme-light .text-pink-300,
+.theme-light .text-pink-400 {
+  color: #9d174d !important; /* pink-800 */
+}
+
+.theme-light .text-emerald-300,
+.theme-light .text-emerald-400 {
+  color: #065f46 !important; /* emerald-800 */
+}
+
+.theme-light .text-sky-300,
+.theme-light .text-sky-400 {
+  color: #075985 !important; /* sky-800 */
+}
+
+.theme-light .text-amber-300,
+.theme-light .text-amber-400 {
+  color: #92400e !important; /* amber-800 */
+}
+
+.theme-light .text-indigo-300,
+.theme-light .text-indigo-400 {
+  color: #3730a3 !important; /* indigo-800 */
+}
+
+/* Badge Backgrounds in Light Mode */
+.theme-light .bg-purple-500\/10,
+.theme-light .bg-purple-500\/15,
+.theme-light .bg-purple-500\/20 {
+  background-color: #f3e8ff !important;
+  border-color: #d8b4fe !important;
+}
+
+.theme-light .bg-pink-500\/10,
+.theme-light .bg-pink-500\/15,
+.theme-light .bg-pink-500\/20 {
+  background-color: #fce7f3 !important;
+  border-color: #fbcfe8 !important;
+}
+
+.theme-light .bg-emerald-500\/10,
+.theme-light .bg-emerald-500\/15,
+.theme-light .bg-emerald-500\/20 {
+  background-color: #d1fae5 !important;
+  border-color: #a7f3d0 !important;
+}
+
+.theme-light .bg-sky-500\/10,
+.theme-light .bg-sky-500\/15,
+.theme-light .bg-sky-500\/20 {
+  background-color: #e0f2fe !important;
+  border-color: #bae6fd !important;
+}
+
+.theme-light .bg-amber-500\/10,
+.theme-light .bg-amber-500\/15,
+.theme-light .bg-amber-500\/20 {
+  background-color: #fef3c7 !important;
+  border-color: #fde68a !important;
+}
+
+/* Skills Section Progress Track & Chart in Light Mode */
+.theme-light .bg-slate-800 {
+  background-color: #e2e8f0 !important;
+}
+
+.theme-light svg text {
+  fill: #334155 !important;
+  font-weight: 600 !important;
+}
+
+.theme-light svg text[fill="#f472b6"] {
+  fill: #be185d !important;
+  font-weight: 700 !important;
+}
+
+.theme-light svg line {
+  stroke: rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Forms, Inputs and Textareas */
+.theme-light input,
+.theme-light textarea {
+  background-color: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  color: #0f172a !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+.theme-light input:focus,
+.theme-light textarea:focus {
+  border-color: #a855f7 !important;
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15) !important;
+}
+
+.theme-light input::placeholder,
+.theme-light textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* Navbar & Sticky Header */
+.theme-light header {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03) !important;
+}
+
+.theme-light header nav button {
+  color: #475569 !important;
+}
+
+.theme-light header nav button:hover {
+  color: #0f172a !important;
+}
+
+/* Bottom Large CTA Banners */
+.theme-light .bg-gradient-to-r.from-purple-950\/40 {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 50%, #fdf2f8 100%) !important;
+  border-color: #d8b4fe !important;
+  box-shadow: 0 10px 30px -10px rgba(168, 85, 247, 0.12) !important;
+}
+
+/* ==========================================================================
+   CONTACT INFORMATION: Vibrant Light Mode Icon Backgrounds (No Dull Grey)
+   ========================================================================== */
+/* Send Message Title Icon */
+.theme-light .contact-form-icon {
+  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%) !important;
+  border: none !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(126, 34, 206, 0.3) !important;
+}
+
+.theme-light .contact-form-icon svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Individual Contact Info Row Cards */
+.theme-light .contact-card-email,
+.theme-light .contact-card-phone,
+.theme-light .contact-card-location,
+.theme-light .contact-card-resume {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03) !important;
+}
+
+.theme-light .contact-card-email:hover {
+  border-color: #fda4af !important;
+  background: #fffbfa !important;
+  box-shadow: 0 4px 16px rgba(244, 63, 94, 0.12) !important;
+}
+
+.theme-light .contact-card-phone:hover {
+  border-color: #7dd3fc !important;
+  background: #f8fcff !important;
+  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.12) !important;
+}
+
+.theme-light .contact-card-location:hover {
+  border-color: #d8b4fe !important;
+  background: #fcfaff !important;
+  box-shadow: 0 4px 16px rgba(126, 34, 206, 0.12) !important;
+}
+
+.theme-light .contact-card-resume:hover {
+  border-color: #f472b6 !important;
+  background: #fff9fc !important;
+  box-shadow: 0 4px 16px rgba(219, 39, 119, 0.12) !important;
+}
+
+/* 1. Email Card: Vibrant Rose / Coral Gradient (Crisp White Icon, No Grey) */
+.theme-light .contact-card-email .contact-icon-box {
+  background: linear-gradient(135deg, #fb7185 0%, #e11d48 100%) !important;
+  border: none !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35) !important;
+}
+
+.theme-light .contact-card-email .contact-icon-box svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+.theme-light .contact-card-email .contact-action-btn {
+  background-color: #ffe4e6 !important;
+  border: 1.5px solid #fda4af !important;
+  color: #e11d48 !important;
+}
+
+.theme-light .contact-card-email .contact-action-btn svg {
+  color: #e11d48 !important;
+  stroke: #e11d48 !important;
+}
+
+.theme-light .contact-card-email .contact-action-btn:hover {
+  background-color: #e11d48 !important;
+  border-color: #e11d48 !important;
+  color: #ffffff !important;
+}
+
+.theme-light .contact-card-email .contact-action-btn:hover svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* 2. Phone Card: Vibrant Ocean / Sky Blue Gradient (Crisp White Icon, No Grey) */
+.theme-light .contact-card-phone .contact-icon-box {
+  background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%) !important;
+  border: none !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35) !important;
+}
+
+.theme-light .contact-card-phone .contact-icon-box svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+.theme-light .contact-card-phone .contact-action-btn {
+  background-color: #e0f2fe !important;
+  border: 1.5px solid #7dd3fc !important;
+  color: #0284c7 !important;
+}
+
+.theme-light .contact-card-phone .contact-action-btn svg {
+  color: #0284c7 !important;
+  stroke: #0284c7 !important;
+}
+
+.theme-light .contact-card-phone .contact-action-btn:hover {
+  background-color: #0284c7 !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+.theme-light .contact-card-phone .contact-action-btn:hover svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* 3. Location Card: Vibrant Royal Purple Gradient (Crisp White Icon, No Grey) */
+.theme-light .contact-card-location .contact-icon-box {
+  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%) !important;
+  border: none !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(126, 34, 206, 0.35) !important;
+}
+
+.theme-light .contact-card-location .contact-icon-box svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+.theme-light .contact-card-location .contact-action-btn {
+  background-color: #f3e8ff !important;
+  border: 1.5px solid #d8b4fe !important;
+  color: #7e22ce !important;
+}
+
+.theme-light .contact-card-location .contact-action-btn svg {
+  color: #7e22ce !important;
+  stroke: #7e22ce !important;
+}
+
+.theme-light .contact-card-location .contact-action-btn:hover {
+  background-color: #7e22ce !important;
+  border-color: #7e22ce !important;
+  color: #ffffff !important;
+}
+
+.theme-light .contact-card-location .contact-action-btn:hover svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* 4. Resume / CV Card: Vibrant Magenta / Fuchsia Gradient (Crisp White Icon, No Grey) */
+.theme-light .contact-card-resume .contact-icon-box {
+  background: linear-gradient(135deg, #f472b6 0%, #be185d 100%) !important;
+  border: none !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(190, 24, 93, 0.35) !important;
+}
+
+.theme-light .contact-card-resume .contact-icon-box svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+.theme-light .contact-card-resume .contact-action-btn {
+  background-color: #fdf2f8 !important;
+  border: 1.5px solid #fbcfe8 !important;
+  color: #be185d !important;
+}
+
+.theme-light .contact-card-resume .contact-action-btn svg {
+  color: #be185d !important;
+  stroke: #be185d !important;
+}
+
+.theme-light .contact-card-resume:hover .contact-action-btn {
+  background-color: #be185d !important;
+  border-color: #be185d !important;
+  color: #ffffff !important;
+}
+
+.theme-light .contact-card-resume:hover .contact-action-btn svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Social Buttons in Let's Be Social (Vibrant Themed Pastel Gradients, No Grey) */
+.theme-light .social-link-btn:nth-child(1) {
+  background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%) !important;
+  border: 1.5px solid #d8b4fe !important;
+  box-shadow: 0 3px 10px rgba(126, 34, 206, 0.12) !important;
+}
+
+.theme-light .social-link-btn:nth-child(1):hover {
+  background: #7e22ce !important;
+  border-color: #7e22ce !important;
+}
+
+.theme-light .social-link-btn:nth-child(2) {
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%) !important;
+  border: 1.5px solid #7dd3fc !important;
+  box-shadow: 0 3px 10px rgba(2, 132, 199, 0.12) !important;
+}
+
+.theme-light .social-link-btn:nth-child(2):hover {
+  background: #0284c7 !important;
+  border-color: #0284c7 !important;
+}
+
+.theme-light .social-link-btn:nth-child(3) {
+  background: linear-gradient(135deg, #ffe4e6 0%, #fecdd3 100%) !important;
+  border: 1.5px solid #fda4af !important;
+  box-shadow: 0 3px 10px rgba(225, 29, 72, 0.12) !important;
+}
+
+.theme-light .social-link-btn:nth-child(3):hover {
+  background: #e11d48 !important;
+  border-color: #e11d48 !important;
+}
+
+/* ==========================================================================
+   BLOG SECTION: Light Mode Contrast & Styling (Dark Mode 100% Untouched)
+   ========================================================================== */
+.theme-light .blog-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  box-shadow: 0 4px 20px -2px rgba(99, 102, 241, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04) !important;
+}
+
+.theme-light .blog-card:hover {
+  border-color: #d8b4fe !important;
+  box-shadow: 0 12px 30px -4px rgba(168, 85, 247, 0.15) !important;
+}
+
+.theme-light .blog-filter-btn {
+  color: #334155 !important;
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+}
+
+.theme-light .blog-filter-btn:hover {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #94a3b8 !important;
+}
+
+.theme-light .blog-tag-pill {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+  color: #64748b !important;
+}
+
+.theme-light .blog-read-btn {
+  color: #7e22ce !important;
+}
+
+.theme-light .blog-read-btn:hover {
+  color: #be185d !important;
+}
+
+/* Light Mode Article Modal */
+.theme-light .fixed .bg-\[\#090d1c\] {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #1e293b !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+}
+
+.theme-light .fixed .bg-slate-900\/60 {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+.theme-light .fixed .bg-purple-500\/10 {
+  background-color: #faf5ff !important;
+  border-color: #d8b4fe !important;
+  color: #581c87 !important;
+}
+
+.theme-light .fixed .bg-\[\#050811\] {
+  background-color: #0f172a !important;
+  border-color: #1e293b !important;
+}
+
+.theme-light .fixed .bg-slate-800\/80 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #475569 !important;
+}
+
+
+
+
