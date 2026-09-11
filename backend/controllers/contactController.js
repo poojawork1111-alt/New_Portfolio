@@ -8,17 +8,41 @@ import { sendContactNotification } from '../utils/emailService.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const dataDir = path.join(__dirname, '..', 'data');
+const tmpFile = path.join(process.env.TEMP || process.env.TMP || '/tmp', 'messages.json');
 
 const readMessagesFromJson = () => {
-  const filePath = path.join(dataDir, 'messages.json');
-  if (!fs.existsSync(filePath)) return [];
-  const raw = fs.readFileSync(filePath, 'utf-8');
-  return JSON.parse(raw);
+  try {
+    if (fs.existsSync(tmpFile)) {
+      const raw = fs.readFileSync(tmpFile, 'utf-8');
+      return JSON.parse(raw);
+    }
+    const filePath = path.join(dataDir, 'messages.json');
+    if (fs.existsSync(filePath)) {
+      const raw = fs.readFileSync(filePath, 'utf-8');
+      return JSON.parse(raw);
+    }
+  } catch (err) {
+    console.warn('[Contact API] Notice: Could not read local JSON messages:', err.message);
+  }
+  return [];
 };
 
 const writeMessagesToJson = (data) => {
-  const filePath = path.join(dataDir, 'messages.json');
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
+  const content = JSON.stringify(data, null, 2);
+  // Attempt 1: write to backend/data/messages.json (works in standard/local node)
+  try {
+    const filePath = path.join(dataDir, 'messages.json');
+    fs.writeFileSync(filePath, content, 'utf-8');
+    return;
+  } catch (fsErr) {
+    // Attempt 2: write to temporary directory (works in read-only serverless e.g. Vercel /tmp)
+    try {
+      fs.writeFileSync(tmpFile, content, 'utf-8');
+      return;
+    } catch (tmpErr) {
+      console.warn('[Contact API] Notice: Local storage skipped on read-only serverless filesystem:', tmpErr.message);
+    }
+  }
 };
 
 export const submitContact = async (req, res) => {

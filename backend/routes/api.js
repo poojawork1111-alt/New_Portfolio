@@ -29,6 +29,15 @@ router.get('/blogs', getBlogs);
 router.get('/blogs/:slug', getBlogBySlug);
 
 // Contact API
+router.get('/contact', (req, res) => {
+  res.json({
+    status: 'ready',
+    endpoint: '/api/contact',
+    method: 'POST',
+    description: 'Send a POST request with { name, email, subject, message } to send a message.',
+    messagesEndpoint: '/api/contact/messages'
+  });
+});
 router.post('/contact', submitContact);
 router.get('/contact/messages', getMessages);
 
