@@ -14,6 +14,7 @@ router.get('/health', (req, res) => {
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
     database: isMongoConnected() ? 'MongoDB (Connected)' : 'Local JSON Fallback',
+    mongoUriConfigured: Boolean(process.env.MONGODB_URI && process.env.MONGODB_URI.trim()),
     techStack: ['Node.js', 'Express.js', 'React.js', 'Tailwind CSS', 'MongoDB Atlas']
   });
 });

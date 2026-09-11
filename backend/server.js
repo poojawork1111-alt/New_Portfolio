@@ -34,6 +34,16 @@ app.use((req, res, next) => {
   next();
 });
 
+// Ensure MongoDB connection is active for each serverless request
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+  } catch {
+    // Continue with graceful fallback
+  }
+  next();
+});
+
 // Root fallback for direct backend inspection
 app.get('/', (req, res) => {
   res.json({
