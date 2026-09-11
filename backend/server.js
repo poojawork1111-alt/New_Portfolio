@@ -68,3 +68,5 @@ app.listen(PORT, () => {
   console.log(`🚀 Portfolio Backend running at http://localhost:${PORT}`);
   console.log(`📡 Health check available at http://localhost:${PORT}/api/health`);
 });
+
+export default app;
