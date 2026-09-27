@@ -74,9 +74,11 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Internal server error occurred' });
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Portfolio Backend running at http://localhost:${PORT}`);
-  console.log(`📡 Health check available at http://localhost:${PORT}/api/health`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Portfolio Backend running at http://localhost:${PORT}`);
+    console.log(`📡 Health check available at http://localhost:${PORT}/api/health`);
+  });
+}
 
 export default app;
